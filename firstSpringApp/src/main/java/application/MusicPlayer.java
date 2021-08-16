@@ -1,13 +1,44 @@
 package application;
 
-public class MusicPlayer {
-    private Music music;
+import java.util.List;
 
-    public MusicPlayer(Music music) {
-        this.music = music;
+public class MusicPlayer {
+    private List<Music> musicList;
+    private String name;
+    private int volume;
+
+    public MusicPlayer() {
+    }
+
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
+    public void setMusic(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
     public void playMusic(){
-        System.out.println("Playing: " + music.getSong());
+        musicList.forEach(m -> System.out.println(m.getSong()));
+    }
+
+    public List<Music> getMusic() {
+        return musicList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 }
