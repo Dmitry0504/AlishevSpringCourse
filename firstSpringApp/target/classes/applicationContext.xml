@@ -23,7 +23,8 @@
 
 
     <bean id="musicPlayer"
-          class="application.MusicPlayer">
+          class="application.MusicPlayer"
+            scope="prototype">
     <property name="music" ref="list"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
