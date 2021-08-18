@@ -1,5 +1,8 @@
 package application;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PopMusic implements Music {
 
     private PopMusic() {
