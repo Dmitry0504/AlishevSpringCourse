@@ -16,7 +16,9 @@
               class="application.PopMusic">
         </bean>
         <bean id="musicBean3"
-              class="application.ClassicalMusic">
+              class="application.ClassicalMusic"
+                init-method="doMyInit"
+                destroy-method="doMyDestroy">
         </bean>
     </util:list>
 
@@ -24,7 +26,9 @@
 
     <bean id="musicPlayer"
           class="application.MusicPlayer"
-            scope="prototype">
+            scope="prototype"
+            init-method="doMyInit"
+            destroy-method="doMyDestroy">
     <property name="music" ref="list"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>

@@ -41,4 +41,13 @@ public class MusicPlayer {
     public void setVolume(int volume) {
         this.volume = volume;
     }
+
+    public void doMyInit() {
+        System.out.println("MP initialization " + this);
+    }
+
+    public void doMyDestroy() {
+        System.out.println("MP destruction " + this);
+    }
+
 }
