@@ -10,10 +10,12 @@
     <context:property-placeholder location="musicPlayer.properties"/>
     <util:list id="list" value-type="application.Music">
         <bean id="musicBean1"
-              class="application.RockMusic">
+              class="application.RockMusic"
+              factory-method="getRockMusic">
         </bean>
         <bean id="musicBean2"
-              class="application.PopMusic">
+              class="application.PopMusic"
+              factory-method="getPopMusic">
         </bean>
         <bean id="musicBean3"
               class="application.ClassicalMusic"
