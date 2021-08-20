@@ -1,13 +1,23 @@
 package application;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public class MusicPlayer {
     private List<Music> musicList;
     private String name;
     private int volume;
+    private Music music;
 
     public MusicPlayer() {
+    }
+
+    @Autowired
+    public MusicPlayer(ClassicalMusic music) {
+        this.music = music;
     }
 
     public MusicPlayer(List<Music> musicList) {
@@ -19,7 +29,9 @@ public class MusicPlayer {
     }
 
     public void playMusic(){
-        musicList.forEach(m -> System.out.println(m.getSong()));
+        if(musicList != null && !musicList.isEmpty())
+            musicList.forEach(m -> System.out.println(m.getSong()));
+        else System.out.println(music.getSong());
     }
 
     public List<Music> getMusic() {
