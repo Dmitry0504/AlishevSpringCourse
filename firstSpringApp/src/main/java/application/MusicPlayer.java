@@ -24,14 +24,19 @@ public class MusicPlayer {
         this.musicList = musicList;
     }
 
-    public void setMusic(List<Music> musicList) {
+    public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
     }
 
-    public void playMusic(){
-        if(musicList != null && !musicList.isEmpty())
-            musicList.forEach(m -> System.out.println(m.getSong()));
-        else System.out.println(music.getSong());
+    public void setMusic(Music music) {
+        this.music = music;
+    }
+
+    public String playMusic(){
+        return music.getSong();
+//        if(musicList != null && !musicList.isEmpty())
+//            musicList.forEach(m -> System.out.println(m.getSong()));
+//        else System.out.println(music.getSong());
     }
 
     public List<Music> getMusic() {
