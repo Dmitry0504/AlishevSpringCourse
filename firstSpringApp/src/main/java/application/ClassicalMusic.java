@@ -18,15 +18,15 @@ public class ClassicalMusic implements Music {
         return new ClassicalMusic();
     }
 
-    @PostConstruct
-    public void doMyInit() {
-        System.out.println("Doing my initialization");
-    }
-
-    @PreDestroy
-    public void doMyDestroy() {
-        System.out.println("Doing my destruction");
-    }
+//    @PostConstruct
+//    public void doMyInit() {
+//        System.out.println("Doing my initialization");
+//    }
+//
+//    @PreDestroy
+//    public void doMyDestroy() {
+//        System.out.println("Doing my destruction");
+//    }
 
     @Override
     public List<String> getSong() {

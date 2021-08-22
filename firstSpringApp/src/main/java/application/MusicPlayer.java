@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.Random;
 
@@ -17,20 +19,10 @@ public class MusicPlayer {
     @Value("${musicPlayer.volume}")
     private int volume;
 
-    private Music rockMusic;
-    private Music classicalMusic;
-    private Music popMusic;
+    private List<Music> musicList;
 
-    public MusicPlayer() {
-    }
-
-    @Autowired
-    public MusicPlayer(@Qualifier("rockMusic")Music rockMusic,
-                       @Qualifier("classicalMusic")Music classicalMusic,
-                       @Qualifier("popMusic")Music popMusic) {
-        this.rockMusic = rockMusic;
-        this.classicalMusic = classicalMusic;
-        this.popMusic = popMusic;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
     public String playMusic(Genre genre){
@@ -38,11 +30,11 @@ public class MusicPlayer {
         int x = random.nextInt(3);
         switch (genre){
             case POP:
-                return popMusic.getSong().get(x);
+                return musicList.get(1).getSong().get(x);
             case CLASSICAL:
-                return classicalMusic.getSong().get(x);
+                return musicList.get(0).getSong().get(x);
             case ROCK:
-                return rockMusic.getSong().get(x);
+                return musicList.get(2).getSong().get(x);
             default:
                 return "incorrect genre";
         }
@@ -64,10 +56,12 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
+    @PostConstruct
     public void doMyInit() {
         System.out.println("MP initialization " + this);
     }
 
+    @PreDestroy
     public void doMyDestroy() {
         System.out.println("MP destruction " + this);
     }
