@@ -1,8 +1,12 @@
 package application;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
+@Scope("prototype")
 public class RockMusic implements Music {
 
     private RockMusic() {
@@ -13,7 +17,7 @@ public class RockMusic implements Music {
     }
 
     @Override
-    public String getSong() {
-        return "We will rock you";
+    public List<String> getSong() {
+        return List.of("Comatose", "Nothing else matters", "We will rock you");
     }
 }

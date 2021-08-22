@@ -1,46 +1,46 @@
 package application;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class MusicPlayer {
-    private List<Music> musicList;
     private String name;
     private int volume;
-    private Music music;
+
+    private Music rockMusic;
+    private Music classicalMusic;
+    private Music popMusic;
 
     public MusicPlayer() {
     }
 
     @Autowired
-    public MusicPlayer(ClassicalMusic music) {
-        this.music = music;
+    public MusicPlayer(@Qualifier("rockMusic")Music rockMusic,
+                       @Qualifier("classicalMusic")Music classicalMusic,
+                       @Qualifier("popMusic")Music popMusic) {
+        this.rockMusic = rockMusic;
+        this.classicalMusic = classicalMusic;
+        this.popMusic = popMusic;
     }
 
-    public MusicPlayer(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
-    }
-
-    public String playMusic(){
-        return music.getSong();
-//        if(musicList != null && !musicList.isEmpty())
-//            musicList.forEach(m -> System.out.println(m.getSong()));
-//        else System.out.println(music.getSong());
-    }
-
-    public List<Music> getMusic() {
-        return musicList;
+    public String playMusic(Genre genre){
+        Random random = new Random();
+        int x = random.nextInt(3);
+        switch (genre){
+            case POP:
+                return popMusic.getSong().get(x);
+            case CLASSICAL:
+                return classicalMusic.getSong().get(x);
+            case ROCK:
+                return rockMusic.getSong().get(x);
+            default:
+                return "incorrect genre";
+        }
     }
 
     public String getName() {
