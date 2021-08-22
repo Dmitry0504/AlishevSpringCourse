@@ -21,4 +21,8 @@ public class Computer {
                 ", musicPlayer=" + musicPlayer.playMusic(Genre.ROCK) +
                 '}';
     }
+
+    public MusicPlayer getMusicPlayer() {
+        return musicPlayer;
+    }
 }
