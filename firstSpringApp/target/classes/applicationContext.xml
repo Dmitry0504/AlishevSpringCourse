@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <context:property-placeholder location="musicPlayer.properties"/>
+    <context:component-scan base-package="application"/>
+
+
+    <!--
+    <util:list id="list" value-type="application.Music">
+        <bean id="musicBean1"
+              class="application.RockMusic"
+              factory-method="getRockMusic">
+        </bean>
+        <bean id="musicBean2"
+              class="application.PopMusic"
+              factory-method="getPopMusic">
+        </bean>
+        <bean id="musicBean3"
+              class="application.ClassicalMusic"
+                init-method="doMyInit"
+                destroy-method="doMyDestroy">
+        </bean>
+    </util:list>
+
+
+
+    <bean id="musicPlayer"
+          class="application.MusicPlayer"
+            scope="prototype"
+            init-method="doMyInit"
+            destroy-method="doMyDestroy">
+    <property name="music" ref="list"/>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
+    -->
+
+</beans>
